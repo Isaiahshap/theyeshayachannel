@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Button,
   Container,
@@ -27,6 +27,32 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [count, setCount] = useState(0);
+  const [playing, setPlaying] = useState(false);  // Start with music off
+
+  useEffect(() => {
+    const audio = document.getElementById('background-music') as HTMLAudioElement;
+    // Ensure audio element is available
+    if (audio) {
+      // Handle play/pause based on user interaction
+      if (playing) {
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            // Handle any errors that occur during playback
+            console.error('Failed to play:', error);
+            // Optional: Automatically retry or inform the user
+          });
+        }
+      } else {
+        audio.pause();
+      }
+    }
+  }, [playing]);
+
+  const toggleMusic = () => {
+    // Toggle the playing state
+    setPlaying(!playing);
+  };
 
   return (
     <>
@@ -36,7 +62,7 @@ function App() {
           height: '100vh',
           width: '100vw',
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'continent',
           justifyContent: 'center',
           position: 'relative',
         }}
@@ -57,8 +83,11 @@ function App() {
         >
           <div style={{ textAlign: 'center' }}>
             <h1>The yeshaya channel</h1>
+            <Button onClick={toggleMusic}>
+              {playing ? 'Pause Music' : 'Play Music'}
+            </Button>
             <div className="card">
-              <Button onClick={() => setCount((count) => count + 1)}>
+              <Button onClick={() => setCount(count + 1)}>
                 <SevenSegmentDisplay
                   color="white"
                   segmentThickness="none"
@@ -85,6 +114,10 @@ function App() {
           </div>
         </Background>
       </Container>
+      <audio id="background-music" loop>
+        <source src="/music.m4a" type="audio/mp4" />
+        Your browser does not support the audio element.
+      </audio>
     </>
   );
 }
