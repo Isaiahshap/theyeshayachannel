@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'VT323', monospace;
+  background-color: #000080;
+  color: #00FF00;
+  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVR4nO3XSwrCMBQF0Js6cCUi4mf+/3+Kv/EPRRduQRHETeu4hQpCaBPbOKlNMu8OCs2DnJCXAkAzNSLRrcssT7dAlqf7v+8mImwRaQLMOIArMJVlps6B8T4/HFX5c2AKrICpuznW5gHvAivgYc7lPOUVsAYeRbk+1gF3YJPl6aEEsAHuKl/HJuCqylQf04CL8UslLqaA86fciUvAuUq5E2NA0w0x4FSlOxOAgzlnA2dgbgPQdAwwA4479y5Ae+zZAaAL6AIOA2/aYXC5qwGxDwAAAABJRU5ErkJggg=='), auto;
+}
+
+.App {
+  text-align: center;
+  background-image: url('https://eol.jsc.nasa.gov/Collections/EarthArt/img/CloudsSaudiArabia/ISS047-E-57170-57184_preview.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  background-color: #000;
+  padding: 20px;
+}
+
+.marquee {
+  color: #FF00FF;
+  font-size: 24px;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #00FF00;
+  box-shadow: 0 0 10px #00FF00;
+}
+
+.neon-button {
+  background-color: #000;
+  color: #00FF00;
+  border: 2px solid #00FF00;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  text-shadow: 0 0 5px #00FF00;
+  box-shadow: 0 0 10px #00FF00;
+  transition: all 0.3s;
+}
+
+.neon-button:hover {
+  background-color: #00FF00;
+  color: #000;
+}
+
+.counter {
+  margin: 20px 0;
+}
+
+.seven-segment {
+  font-family: 'Digital-7', monospace;
+  font-size: 48px;
+  color: #FF0000;
+  background-color: #000;
+  padding: 10px;
+  border: 2px solid #FF0000;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.pager {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pager span {
+  background-color: #808080;
+  color: #000;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+.retro-img {
+  border: 2px solid #FFF;
+  margin: 20px 0;
+}
+
+.quotes {
+  margin-top: 20px;
+}
+
+.rainbow {
+  height: 4px;
+  border: none;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+}
+
+.weather-banner {
+  margin-top: 20px;
+}
+
+footer {
+  background-color: #000;
+  padding: 10px;
+}
+
+/* Mouse trail effect */
+.mouse-trail {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.imac {
+    align-self: center;
+    width: 200px;
+    height: 100%;
+
+}
