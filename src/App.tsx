@@ -10,7 +10,8 @@ import {
   NavItem,
   StarField,
   Button,
-  MouseTrail
+  MouseTrail,
+  Container
 } from 'retro-react';
 
 const GlobalStyle = createGlobalStyle`
@@ -64,11 +65,12 @@ function App() {
 
   return (
     <Router>
+      <div style={{ position: 'relative', zIndex: 10 }}>
       <GlobalStyle />
       <MouseTrail
         offset={{ x: 0, y: 0 }}
         particleColor="rainbow"
-        particleSize={5}
+        particleSize={7}
         style={{
           position: 'absolute',
           top: 0,
@@ -78,6 +80,7 @@ function App() {
           pointerEvents: 'none'
         }}
       />
+      <Container className='starfield' style={{ position: 'fixed', zIndex: 1 }}>
       <StarField
         numStars={1000}
         size={2}
@@ -89,9 +92,10 @@ function App() {
           left: 0,
           width: '100%',
           height: '100%',
-          zIndex: -1
+          zIndex: 1,
         }}
       />
+      </Container>
       <Navbar color="primary" pattern="stars" style={{ width: '100%', position: 'fixed', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <NavLogo>
           <div className="marquee-container">
@@ -123,6 +127,7 @@ function App() {
         <source src="/vaporwavemix.m4a" type="audio/mp4" />
         Your browser does not support the audio element.
       </audio>
+      </div>
     </Router>
   );
 }

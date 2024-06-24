@@ -8,6 +8,8 @@ body, html, #root {
   font-family: 'VT323', monospace;
   color: #00FF00;
   cursor: url('data:image/png;base64,...'), auto;
+  position: relative;
+  z-index: 2;
 }
 
 .retro-container {
@@ -87,6 +89,10 @@ body, html, #root {
   padding: 20px;
   margin-top: 20px;
   background-color: rgba(2, 2, 2, 0.321);
+}
+
+.starfield {
+  z-index: 1 !important;
 }
 
 #bg {
