@@ -10,8 +10,7 @@ import {
   Navbar,
   NavLogo,
   NavItem,
-  StarField,
-  Text
+  StarField
 } from 'retro-react';
 import { createGlobalStyle } from 'styled-components';
 import './App.css';
@@ -84,7 +83,9 @@ function App() {
         }}
       />
       <div className="retro-container">
-        <Navbar color="primary" pattern="stars" style={{ width: '100%' }}>
+        <Navbar color="primary" pattern="stars" style={{ 
+          width: '100%',
+          position: 'fixed' }}>
           <NavLogo>
             <div className="marquee-container">
               <div className="marquee-text neon-text" style={{ left: `${left}%` }}>
@@ -112,7 +113,7 @@ function App() {
             top: 0,
             left: 0,
             width: '100%',
-            height: '100%',
+            height: '0%',
             pointerEvents: 'none'
           }}
         />
@@ -122,12 +123,12 @@ function App() {
             display: 'flex',
             flexDirection: 'column',
             flexGrow: 1,
-            width: '35vw',
+            width: '55vw',
             alignItems: 'center',
             justifyContent: 'center',
             position: 'relative',
             height: 'calc(100vh + 100px)', // Adjust based on your Navbar height
-            marginTop: '30px', // Add margin to push content below navbar
+            marginTop: '80px', // Add margin to push content below navbar
           }}
         >
           <Background
@@ -136,15 +137,6 @@ function App() {
             backgroundPosition="center center"
             backgroundRepeat="repeat"
             backgroundSize="cover"
-            style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-              zIndex: 1,
-            }}
           >
             <div className="content-wrapper">
               <Button className="retro-button neon-button" onClick={toggleMusic}>
@@ -201,7 +193,7 @@ function App() {
           </Background>
         </Container>
         <audio id="background-music" loop>
-          <source src="/music.m4a" type="audio/mp4" />
+          <source src="/vaporwave1.m4a" type="audio/mp4" />
           Your browser does not support the audio element.
         </audio>
       </div>
