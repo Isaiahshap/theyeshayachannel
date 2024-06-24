@@ -42,7 +42,7 @@ body, html, #root {
   font-size: 18px;
   cursor: pointer;
   transition: all 0.3s;
-  margin-top: 20px; /* Space from top elements */
+  margin-top: 20px;
 }
 
 .neon-button {
@@ -58,7 +58,7 @@ body, html, #root {
 .retro-text {
   font-size: 18px;
   margin: 10px 0;
-  color: #57ff29;
+  color: #3cda11;
 }
 
 .blink {
@@ -88,3 +88,19 @@ body, html, #root {
   margin-top: 20px;
   background-color: rgba(2, 2, 2, 0.321);
 }
+
+#bg {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background: url('http://starmen.net/mother2/maps/onett.png') no-repeat center center;
+    background-size: 400%;
+    image-rendering: pixelated;
+    animation: background-scroll 90s linear alternate infinite;
+    color: transparent;
+    opacity: 0.3;
+  }
+  
+  @keyframes background-scroll {
+    0% { background-position: 55% 70%; }
+    100% { background-position: 55% 0%; }
+  }
