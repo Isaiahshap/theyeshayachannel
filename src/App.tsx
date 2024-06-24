@@ -193,7 +193,7 @@ function App() {
           </Background>
         </Container>
         <audio id="background-music" loop>
-          <source src="/vaporwaavemix.m4a" type="audio/mp4" />
+          <source src="/vaporwavemix.m4a" type="audio/mp4" />
           Your browser does not support the audio element.
         </audio>
       </div>
