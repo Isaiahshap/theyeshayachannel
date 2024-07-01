@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import FunStuff from './FunStuff';
-import Music from './Music'; // Import the Music component
+import Weather from './Weather'; 
 import { createGlobalStyle } from 'styled-components';
 import './App.css';
 import {
@@ -77,7 +77,7 @@ function App() {
               <Link to="/funstuff">Fun Stuff</Link>
             </NavItem>
             <NavItem>
-              <Link to="/music">Music</Link>
+              <Link to="/weather">Check your weather!</Link>
             </NavItem>
           </div>
         </Navbar>
@@ -98,7 +98,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/funstuff" element={<FunStuff />} />
-          <Route path="/music" element={<Music />} />
+          <Route path="/weather" element={<Weather />} />
         </Routes>
         <audio id="background-music" loop>
           <source src="/vaporwavemix.m4a" type="audio/mp4" />
