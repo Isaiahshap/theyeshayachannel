@@ -1,5 +1,3 @@
-import './App.css'; // Import general styles
-
 function FunStuff() {
   return (
 
