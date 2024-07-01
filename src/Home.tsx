@@ -11,7 +11,7 @@ import {
 
 function Home() {
   const [count, setCount] = useState(0);
-  const [_left, setLeft] = useState(100);
+  const [left, setLeft] = useState(100);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -38,7 +38,8 @@ function Home() {
           top: 0,
           left: 0,
           width: '100%',
-          height: '100%'
+          height: '100%',
+
         }}
       />
       <div className="retro-container">
