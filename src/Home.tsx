@@ -11,7 +11,7 @@ import {
 
 function Home() {
   const [count, setCount] = useState(0);
-  const [left, setLeft] = useState(100);
+  const [_left, setLeft] = useState(100);
 
   useEffect(() => {
     const timer = setInterval(() => {
