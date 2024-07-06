@@ -10,6 +10,7 @@ body, html, #root {
   cursor: url('data:image/png;base64,...'), auto;
   position: relative;
   z-index: 2;
+  background-color: #3741b4;
 }
 
 .retro-container {
@@ -17,7 +18,7 @@ body, html, #root {
   display: flex;
   flex-direction: column;
   position: relative;
-  z-index: 10; /* Above StarField */
+  z-index: 10;
 }
 
 .marquee-container {
@@ -36,60 +37,6 @@ body, html, #root {
   animation: neon-text-glow 1s ease-in-out infinite alternate;
 }
 
-.retro-button {
-  background-color: #000;
-  color: #00FF00;
-  border: 2px solid #00FF00;
-  padding: 10px 20px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: all 0.3s;
-  margin-top: 20px;
-}
-
-.neon-button {
-  text-shadow: 0 0 5px #00FF00;
-  box-shadow: 0 0 10px #00FF00;
-}
-
-.neon-button:hover {
-  background-color: #00FF00;
-  color: #000;
-}
-
-.retro-text {
-  font-size: 18px;
-  margin: 10px 0;
-  color: #3cda11;
-}
-
-.blink {
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-.retro-img {
-  border: 2px solid #FFF;
-  margin: 20px 0;
-}
-
-.content-wrapper {
-  text-align: center;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  z-index: 2;
-  border: 4px solid #FF00FF;
-  box-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF;
-  padding: 20px;
-  margin-top: 20px;
-  background-color: rgba(2, 2, 2, 0.321);
-}
 
 /* Specific styles for weather banner */
 .weather-banner-img {

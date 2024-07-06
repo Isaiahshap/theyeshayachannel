@@ -10,8 +10,8 @@ import {
   NavLogo,
   NavItem,
   Button,
-  MouseTrail  // Assuming 'MouseTrail' is part of 'retro-react' or similar
-} from 'retro-react'; // This assumes you have these components styled appropriately
+  MouseTrail  
+} from 'retro-react'; 
 
 const GlobalStyle = createGlobalStyle`
   body, html, #root {
