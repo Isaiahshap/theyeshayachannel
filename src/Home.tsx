@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StarField } from 'retro-react';
 import GameBoy from './Gameboy';
 import './App.css';
