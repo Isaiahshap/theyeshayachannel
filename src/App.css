@@ -13,6 +13,11 @@ body, html, #root {
   background-color: #3741b4;
 }
 
+@media (max-width: 768px) {
+  .mouse-trail {
+    display: none !important;
+  }
+}
 .retro-container {
   min-height: 100vh;
   display: flex;

@@ -27,9 +27,30 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      const mobile = window.matchMedia("(max-width: 768px)").matches;
+      setIsMobile(mobile);
+    };
+
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
+
+  return isMobile;
+}
+
 function App() {
   const [playing, setPlaying] = useState(false);
   const [left, setLeft] = useState(100);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const audio = document.getElementById('background-music') as HTMLAudioElement;
@@ -81,20 +102,22 @@ function App() {
             </NavItem>
           </div>
         </Navbar>
-        <MouseTrail
-          offset={{ x: 0, y: 0 }}
-          particleColor="rainbow"
-          particleSize={7}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            pointerEvents: 'none',
-            zIndex: 100  // Ensure MouseTrail is visible on all pages
-          }}
-        />
+        {!isMobile && (
+          <MouseTrail
+            offset={{ x: 0, y: 0 }}
+            particleColor="rainbow"
+            particleSize={7}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              pointerEvents: 'none',
+              zIndex: 100
+            }}
+          />
+        )}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/funstuff" element={<FunStuff />} />

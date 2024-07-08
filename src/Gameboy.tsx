@@ -10,7 +10,6 @@ const GameBoy: React.FC<GameBoyProps> = ({ defaultPoweredOn = false, children })
   const [isPoweredOn, setIsPoweredOn] = useState(defaultPoweredOn);
   const [bootSequence, setBootSequence] = useState(false);
   const [nintendoLogo, setNintendoLogo] = useState(false);
-  const [cartridgeInserted, setCartridgeInserted] = useState(false);
 
   useEffect(() => {
     if (isPoweredOn) {
@@ -30,10 +29,6 @@ const GameBoy: React.FC<GameBoyProps> = ({ defaultPoweredOn = false, children })
 
   const handlePowerToggle = () => {
     setIsPoweredOn(!isPoweredOn);
-  };
-
-  const handleCartridgeClick = () => {
-    setCartridgeInserted(!cartridgeInserted);
   };
 
   return (
@@ -57,21 +52,20 @@ const GameBoy: React.FC<GameBoyProps> = ({ defaultPoweredOn = false, children })
 
         <div className="controls-section">
           <div className="d-pad">
-            <div className="d-pad-button up"></div>
-            <div className="d-pad-button right"></div>
-            <div className="d-pad-button down"></div>
-            <div className="d-pad-button left"></div>
-            <div className="d-pad-center"></div>
+            <div className="d-pad-horizontal"></div>
+            <div className="d-pad-vertical"></div>
           </div>
 
           <div className="action-buttons">
-            <div className="button-a">A</div>
-            <div className="button-b">B</div>
+            <button className="button-a">A</button>
+            <button className="button-b">B</button>
           </div>
+        </div>
 
+        <div className="bottom-section">
           <div className="start-select-buttons">
-            <div className="button-start">START</div>
-            <div className="button-select">SELECT</div>
+            <button className="button-start">START</button>
+            <button className="button-select">SELECT</button>
           </div>
 
           <div className="speaker">
@@ -89,11 +83,6 @@ const GameBoy: React.FC<GameBoyProps> = ({ defaultPoweredOn = false, children })
         <div className={`power-switch ${isPoweredOn ? 'on' : 'off'}`} onClick={handlePowerToggle}></div>
       </div>
 
-      <div className={`cartridge-slot ${cartridgeInserted ? 'inserted' : ''}`} onClick={handleCartridgeClick}>
-        <div className="cartridge">
-          <img src={`${import.meta.env.BASE_URL}mario-cartridge.png`} alt="Mario Cartridge" />
-        </div>
-      </div>
       <div className="headphone-jack">PHONES</div>
       <div className="volume-control">
         <div className="volume-slider"></div>

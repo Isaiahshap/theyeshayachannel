@@ -4,7 +4,6 @@ import GameBoy from './Gameboy';
 import './App.css';
 
 const Home: React.FC = () => {
-
   return (
     <div className="home-container">
       <div className="home-background"></div>
@@ -19,13 +18,17 @@ const Home: React.FC = () => {
           left: 0,
           width: '100%',
           height: '100%',
-          zIndex: 2,
+          zIndex: 0,
         }}
       />
       <div className="main-content">
         <div className="gameboy-wrapper">
-          <GameBoy defaultPoweredOn={true} >
-          <iframe src = "https://microstudio.io/HomineLudens/marblequest/" />
+          <GameBoy defaultPoweredOn={true}>
+            <iframe 
+              src="https://microstudio.io/HomineLudens/marblequest/" 
+              style={{width: '100%', height: '100%', border: 'none'}}
+              title="Marble Quest Game"
+            />
           </GameBoy>
         </div>
       </div>
