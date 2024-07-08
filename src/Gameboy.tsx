@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "./Gameboy.css";
 
 interface GameBoyProps {
@@ -10,6 +10,8 @@ const GameBoy: React.FC<GameBoyProps> = ({ defaultPoweredOn = false, children })
   const [isPoweredOn, setIsPoweredOn] = useState(defaultPoweredOn);
   const [bootSequence, setBootSequence] = useState(false);
   const [nintendoLogo, setNintendoLogo] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const gameAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isPoweredOn) {
@@ -31,6 +33,29 @@ const GameBoy: React.FC<GameBoyProps> = ({ defaultPoweredOn = false, children })
     setIsPoweredOn(!isPoweredOn);
   };
 
+  const sendPointerEvent = (x: number, y: number, isDown: boolean) => {
+    if (iframeRef.current && iframeRef.current.contentWindow && gameAreaRef.current) {
+      const rect = gameAreaRef.current.getBoundingClientRect();
+      const event = new PointerEvent(isDown ? 'pointerdown' : 'pointerup', {
+        bubbles: true,
+        cancelable: true,
+        clientX: rect.left + x,
+        clientY: rect.top + y,
+      });
+      iframeRef.current.contentWindow.dispatchEvent(event);
+    }
+  };
+
+  const handleDPadEvent = (direction: 'left' | 'right', isPressed: boolean) => {
+    if (gameAreaRef.current) {
+      const width = gameAreaRef.current.clientWidth;
+      const height = gameAreaRef.current.clientHeight;
+      const x = direction === 'left' ? width * 0.25 : width * 0.75;
+      const y = height / 2;
+      sendPointerEvent(x, y, isPressed);
+    }
+  };
+
   return (
     <div className="gameboy">
       <div className="gameboy-body">
@@ -41,7 +66,9 @@ const GameBoy: React.FC<GameBoyProps> = ({ defaultPoweredOn = false, children })
               {bootSequence && <div className="boot-sequence"></div>}
               {nintendoLogo && <div className="nintendo-logo">Skintendo®</div>}
               {!bootSequence && !nintendoLogo && isPoweredOn && (
-                <div className="screen-content">{children}</div>
+                <div className="screen-content" ref={gameAreaRef}>
+                  {React.cloneElement(children as React.ReactElement, { ref: iframeRef })}
+                </div>
               )}
             </div>
           </div>
@@ -54,6 +81,21 @@ const GameBoy: React.FC<GameBoyProps> = ({ defaultPoweredOn = false, children })
           <div className="d-pad">
             <div className="d-pad-horizontal"></div>
             <div className="d-pad-vertical"></div>
+            <div className="d-pad-center"></div>
+            <div className="d-pad-up"></div>
+            <div className="d-pad-right"
+              onMouseDown={() => handleDPadEvent('right', true)}
+              onMouseUp={() => handleDPadEvent('right', false)}
+              onTouchStart={() => handleDPadEvent('right', true)}
+              onTouchEnd={() => handleDPadEvent('right', false)}
+            ></div>
+            <div className="d-pad-down"></div>
+            <div className="d-pad-left"
+              onMouseDown={() => handleDPadEvent('left', true)}
+              onMouseUp={() => handleDPadEvent('left', false)}
+              onTouchStart={() => handleDPadEvent('left', true)}
+              onTouchEnd={() => handleDPadEvent('left', false)}
+            ></div>
           </div>
 
           <div className="action-buttons">
